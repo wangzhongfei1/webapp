@@ -1,17 +1,25 @@
 <template>
 <div>
-    <div class="header">
+    <div class="box">
+        <div class="header">
             <div class="city" @click="handleCity"><span>{{this.cityName}}</span><span class="iconfont icon-zhankai"></span></div>
             <div class="title">影院</div>
             <div class="search">
                 <span class="iconfont icon-sousuo"></span>
             </div>
         </div>
+    </div>
     <div class="scrollCinema" :style="mystyle">
         <ul>
             <li v-for="data in cinemaList" :key="data.cinemaId">
-                {{data.name}}
-                <p class="cinemaAddress">{{data.address}}</p>
+                <div class="left">
+                    <p class="cinemaName">{{data.name}}</p>
+                <p class="cinemaAddress line-ellipsis">{{data.address}}</p>
+                </div>
+                <div class="right">
+                    <p class="money">￥{{data.lowPrice/100}}起</p>
+                <p class="distance">离我{{data.Distance.toFixed(2)}}km</p>
+                </div>
             </li>
         </ul>
     </div>
@@ -66,6 +74,27 @@ export default {
 <style lang="scss" scoped>
 li {
     height: 80px;
+    display: flex;
+    padding: 15px;
+    color: #797d82;
+    .left {
+        flex: 4;
+        padding-right: 15px;
+        .cinemaName {
+            color: #191a1b;
+        }
+    }
+    .right  {
+        flex: 1;
+        .distance {
+            font-size: 12px;
+            float: right;
+        }
+        .money {
+            float: right;
+            color: #e54847;
+        }
+    }
 }
 .scrollCinema {
     overflow: hidden;
@@ -73,6 +102,11 @@ li {
 }
 .cinemaAddress {
     font-size: 12px;
+}
+.box {
+    position: relative;
+    width: 100%;
+    height: 50px;
 }
 .header {
     position:fixed;
@@ -85,5 +119,10 @@ li {
     background-color: #fff;
     z-index: 333;
     padding: 0 10px;
+}
+.line-ellipsis {
+//   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
