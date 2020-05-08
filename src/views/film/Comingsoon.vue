@@ -25,21 +25,21 @@ Vue.filter('imgpath', function (path) {
   return path.replace('w.h', '128.180')
 })
 export default {
-    data () {
-        return {}
-    },
-    mounted () {
-        if(this.$store.state.comingList.length === 0) {
-            //发送ajax请求
-            this.$store.dispatch('getcomingListAction')
-        } else {    
-            // 使用缓冲数据
-            console.log('使用缓存数据')
-        }
-    },
-    computed: {
-        ...mapState(['comingList'])
+  data () {
+    return {}
+  },
+  mounted () {
+    if (this.$store.state.comingList.length === 0) {
+      // 发送ajax请求
+      this.$store.dispatch('getcomingListAction')
+    } else {
+      // 使用缓冲数据
+      console.log('使用缓存数据')
     }
+  },
+  computed: {
+    ...mapState(['comingList'])
+  }
 }
 </script>
 
@@ -88,7 +88,7 @@ ul {
             border-radius: 5px;
         }
     }
-    
+
   }
 }
 </style>

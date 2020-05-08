@@ -56,7 +56,7 @@ export default {
     }
   },
   props: ['id'],
-  beforeMount() {
+  beforeMount () {
     this.$store.commit(HIDE_TABBAR_MUTATION, false)
   },
   mounted () {
@@ -67,14 +67,13 @@ export default {
         'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"15886737532641404887998"}',
         'X-Host': 'mall.film-ticket.film.info'
       }
-    })  
+    })
       .then(res => {
         this.filmInfo = res.data.data.film
       })
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.$store.commit(SHOW_TABBAR_MUTATION, true)
-
   },
   components: {
     swiper

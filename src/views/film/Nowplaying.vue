@@ -50,22 +50,22 @@ export default {
       // this.$router.push(`/detail/${id}`)
       this.$router.push({ name: 'wangdetail', params: { id: id } })
     },
-    loadMore() {
+    loadMore () {
       console.log('到底了')
-      this.loading = true  // 禁用
+      this.loading = true // 禁用
       this.isShow = true
-      if(this.datalist.length === 20) {
+      if (this.datalist.length === 20) {
         this.isShow = false
-        return;
+        return
       }
       this.$http
-      .get(
-        '/ajax/moreComingList?ci=10&token=&limit=10&movieIds=344450%2C346210%2C1216053%2C1298938%2C1199007%2C489894%2C1230199%2C342178%2C1213079%2C1301444&optimus_uuid=D0EC4EA08F7311EA92D7A7093D0AD1C8AE82D8886EA7478AA5B7AB23C8A9C2AC&optimus_risk_level=71&optimus_code=10'
-      )
-      .then(res => {
-        this.datalist = [...this.datalist, ...res.data.coming]
-        this.loading = false // 开启
-      })
+        .get(
+          '/ajax/moreComingList?ci=10&token=&limit=10&movieIds=344450%2C346210%2C1216053%2C1298938%2C1199007%2C489894%2C1230199%2C342178%2C1213079%2C1301444&optimus_uuid=D0EC4EA08F7311EA92D7A7093D0AD1C8AE82D8886EA7478AA5B7AB23C8A9C2AC&optimus_risk_level=71&optimus_code=10'
+        )
+        .then(res => {
+          this.datalist = [...this.datalist, ...res.data.coming]
+          this.loading = false // 开启
+        })
     }
   }
 }

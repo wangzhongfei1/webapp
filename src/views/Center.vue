@@ -8,13 +8,13 @@
       <mt-button icon="more" slot="right"></mt-button>
      </mt-header>
     </div>
-    
+
     <mt-field label="用户名" placeholder="用户名/手机号/邮箱" v-model="username"></mt-field>
     <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
     <div class="btn-login">
       <mt-button type="danger">登录</mt-button>
     </div>
-    
+
     <div class="subline">
       <a href="javascript:;">立即注册</a>
       <a href="javascript:;">找回密码</a>
@@ -26,7 +26,7 @@
 </template>
 <script>
 export default {
-  
+
 }
 </script>
 <style lang="scss" scoped>

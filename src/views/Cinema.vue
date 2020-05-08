@@ -31,42 +31,43 @@ import BScroll from 'better-scroll'
 export default {
   data () {
     return {
-        cinemaList: [],
-        mystyle: {
-            height: '0px'
-        },
-        cityName: ''
+      cinemaList: [],
+      mystyle: {
+        height: '0px'
+      },
+      cityName: ''
     }
   },
   mounted () {
     // console.log(document.documentElement.clientHeight)
-      this.mystyle.height = document.documentElement.clientHeight - 50 + 'px'
-      var cityId = localStorage.getItem('cityId')
-      this.cityName = localStorage.getItem('cityName')
+    this.mystyle.height = document.documentElement.clientHeight - 50 + 'px'
+    var cityId = localStorage.getItem('cityId')
+    this.cityName = localStorage.getItem('cityName')
     this.$http({
-        url: `/gateway?cityId=${cityId}&ticketFlag=1&k=8662862`,
-        headers: {
-            'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"15886737532641404887998","bc":"110100"}',
-            'X-Host': 'mall.film-ticket.cinema.list'
-        }
+      url: `/gateway?cityId=${cityId}&ticketFlag=1&k=8662862`,
+      headers: {
+        'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"15886737532641404887998","bc":"110100"}',
+        'X-Host': 'mall.film-ticket.cinema.list'
+      }
     })
       .then((res) => {
         console.log(res.data.data)
         this.cinemaList = res.data.data.cinemas
         this.$nextTick(() => {
-            var myscroll = new BScroll('.scrollCinema', {
-                scrollbar: {
-                    fade: true,
-                    interactive: false
-                },
-            })
+          var myscroll = new BScroll('.scrollCinema', {
+            scrollbar: {
+              fade: true,
+              interactive: false
+            }
+          })
+          myscroll.use()
         })
       })
   },
   methods: {
-      handleCity() {
-          this.$router.push('/city')
-      }
+    handleCity () {
+      this.$router.push('/city')
+    }
   }
 }
 </script>
